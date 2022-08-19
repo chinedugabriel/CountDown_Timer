@@ -3,6 +3,7 @@ body{
     width: 100%;
     padding: 0px;
     margin: 0px;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 *{
@@ -60,7 +61,7 @@ section>.row>.col-1>form>.view-timer{
     flex-flow: column nowrap;
     justify-content: space-between;
     align-items: center;
-    /* display: none; */
+    display: none;
 }
 
 section>.row>.col-1>form>.view-timer>.timer-action-view{
@@ -102,7 +103,41 @@ section>.row>.col-1>form>.set-timer{
     height: 20rem;
     display: flex;
     flex-flow: column nowrap;
-    justify-content: center;
+    justify-content: space-evenly;
     align-items: center;
-    display: none;
+    background: #383838;
+
+    /* display: none; */
+}
+
+section>.row>.col-1>form>.set-timer>h1{
+    border: 1px solid blue;
+    font-size: 36px;
+    font-weight: 400;
+    color: white;
+    
+}
+section>.row>.col-1>form>.set-timer>.form-group{
+    border: 1px solid magenta;
+    width: 25rem;
+    display: flex;
+    justify-content: space-between;
+    
+}
+section>.row>.col-1>form>.set-timer>.form-group>input{
+    height: 49px;
+    width: 120px;
+
+
+}
+
+section>.row>.col-1>form>.set-timer>.btn-wrapper-2{
+    border: 1px solid navy;
+
+}
+section>.row>.col-1>form>.set-timer>.btn-wrapper-2>button{
+    font-size: 32px;
+    font-weight: 400;
+    height: 4rem;
+    width: 7rem;
 }
