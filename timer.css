@@ -38,32 +38,71 @@ section>.row>.col-1{
 
 
 }
-section>.row>.col-1>.img-wraper{
+section>.row>.col-1>.img-wrapper{
     border: 1px solid green;
 
 }
+
 section>.row>.col-1>form{
     border: 1px solid green;
-    height: 25rem;
+    min-height: 25rem;
+    min-width: 30rem;
     display: flex;
     flex-flow: column nowrap;
     justify-content: space-evenly;
 }
+
+/* View timer section */
 section>.row>.col-1>form>.view-timer{
     border: 1px solid orange;
-    height: 10rem;
+    height: 20rem;
     display: flex;
     flex-flow: column nowrap;
+    justify-content: space-between;
+    align-items: center;
+    /* display: none; */
+}
+
+section>.row>.col-1>form>.view-timer>.timer-action-view{
+    border: 1px solid blue;
+    width: 25rem;
+    height: 8rem;
+    display: flex;
     justify-content: center;
     align-items: center;
+    background-color:#D9D9D9;
     
 }
+section>.row>.col-1>form>.view-timer>.timer-action-view>h1{
+    font-size: 66px;
+    font-weight: 400;
+    
+}
+
+section>.row>.col-1>form>.view-timer>.btn-wrapper-1{
+    border: 1px solid blue;
+    width: 25rem;
+    height: 5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    
+}
+section>.row>.col-1>form>.view-timer>.btn-wrapper-1>button{
+    font-size: 32px;
+    font-weight: 400;
+    height: 4rem;
+    width: 7rem;
+}
+
+
+/* Set timer section */
 section>.row>.col-1>form>.set-timer{
     border: 1px solid indianred;
-    height: 10rem;
+    height: 20rem;
     display: flex;
     flex-flow: column nowrap;
     justify-content: center;
     align-items: center;
-    
+    display: none;
 }
