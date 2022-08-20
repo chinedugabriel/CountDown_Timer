@@ -4,6 +4,7 @@ body{
     padding: 0px;
     margin: 0px;
     font-family: Arial, Helvetica, sans-serif;
+    background-color: #c2c2c2;
 }
 
 *{
@@ -116,6 +117,14 @@ section>.row>.col-1>form>.set-timer>h1{
     font-weight: 400;
     color: white;
     
+}
+section>.row>.col-1>form>.set-timer>p{
+    color: white;
+    padding: 0px;
+    margin: 0px;
+    font-size: 12px;
+    font-weight: 400;
+    display: none;
 }
 section>.row>.col-1>form>.set-timer>.form-group{
     /* border: 1px solid magenta; */

@@ -15,7 +15,7 @@ let inputIn_seconds = document.getElementById("input-seconds");
 
 let btnSetTimer = document.getElementById("btn-set");
 
-let setTimerHeadingText = document.getElementById("h1-timer");
+let setTimerWarningText = document.getElementById("p-timer");
 
 function toggleSection(){
     if(setTimerSection.hasAttribute("name")){
@@ -30,6 +30,61 @@ function toggleSection(){
     }
 }
 
-btnSetTimer.addEventListener("click", toggleSection);
+    btnBackToSetTimer.addEventListener("click",toggleSection);
 
-btnBackToSetTimer.addEventListener("click",toggleSection);
+
+    
+function setAction(){
+
+    // inputIn_seconds.value = --inputIn_minute.value;
+
+    if(inputIn_hours.value == "" || inputIn_minute.value == "" || inputIn_seconds == ""){
+        setTimerWarningText.innerHTML = "Please input a number";
+        setTimerWarningText.style.display = "block";
+        setTimerWarningText.style.color = "white";
+        setTimeout(()=>{
+            setTimerWarningText.style.display = "none";
+        },2000);
+    }else{
+        btnSetTimer.addEventListener("click", toggleSection);
+        
+        if( inputIn_seconds.value == ""){
+    
+            timeIn_sec.innerHTML = 59;
+    
+            console.log("stage 1 is working");
+            
+        }else{
+            console.log("Else is working");
+            
+            timeIn_sec.innerHTML = inputIn_seconds.value;
+    
+            let result_seconds = timeIn_sec.innerHTML; 
+            
+            
+            // if(result_seconds == 0){
+            //     console.log("stage 2 is working");
+    
+            //     timeIn_sec.innerHTML = "00";
+                
+            //     if(inputIn_minute.value == 0){
+    
+            //         inputIn_minute.value = 59;
+    
+            //     }else{
+    
+            //         result_minutes = --inputIn_minute.value;
+            //     }
+    
+            // }else{
+            //     timeIn_sec.innerHTML = --inputIn_seconds.value;
+            // }
+        }
+        
+    
+        // console.log(inputIn_seconds.value == "")
+
+    }
+}
+
+btnSetTimer.addEventListener("click", setAction);
