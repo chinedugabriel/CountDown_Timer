@@ -247,10 +247,11 @@ section>.row>.col-1>form>.set-timer>.btn-wrapper-2>button{
         
     }
     section>.row>.col-1>form>.view-timer>.btn-wrapper-1>button{
-        font-size: 28px;
+        font-size: 22px;
         font-weight: 400;
         height: 3rem;
         width: 6rem;
+        text-align: center;
     }
     
     
@@ -285,8 +286,6 @@ section>.row>.col-1>form>.set-timer>.btn-wrapper-2>button{
     section>.row>.col-1>form>.set-timer>.form-group>input{
         height: 34.5px;
         width: 82.5px;
-
-        
     
     }
     
