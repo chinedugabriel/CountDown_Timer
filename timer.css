@@ -127,6 +127,8 @@ section>.row>.col-1>form>.set-timer>.form-group{
 section>.row>.col-1>form>.set-timer>.form-group>input{
     height: 49px;
     width: 120px;
+    text-align: center;
+    font-size: 24px;
 
 
 }
