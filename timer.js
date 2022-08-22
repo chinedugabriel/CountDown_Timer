@@ -62,41 +62,47 @@ btnBackToSetTimer.addEventListener("click", ()=>{
 function startAction(){
 
     function countTime(){
-         inputIn_seconds.value == 0 ? timeIn_sec.innerHTML = 0+"0": timeIn_sec.innerHTML = inputIn_seconds.value ;
+        // this function is responsible for the count down
+        
+        //validate to check the input value so it could mirror the input value into the display countdown view 
+        inputIn_seconds.value == 0 ? timeIn_sec.innerHTML = 0+"0": timeIn_sec.innerHTML = inputIn_seconds.value ;
 
          inputIn_minute.value == 0 ? timeIn_min.innerHTML = 0 + "0": timeIn_min.innerHTML = inputIn_minute.value ;
+
          inputIn_hours.value == 0 ? timeIn_hrs.innerHTML = 0 + "0" : timeIn_hrs.innerHTML = inputIn_hours.value;
 
  
-            let result_seconds = inputIn_seconds.value; 
             
-            if (result_seconds == 0){
-                inputIn_seconds.value = 0;
-                
+         // check if the seconds is == 0 
+            if (inputIn_seconds.value == 0){
+                // then check if minute input value is greater then 1
                 if(inputIn_minute.value >=1 ){
-
+                    // then remove -1 from minutes
                     timeIn_min.innerHTML = --inputIn_minute.value;
-
+                    // then add 59 to seconds value to wait for 59seconds before removing -1 from minute again
                     inputIn_seconds.value = 59;
                 }else{
+                    // if the minutes value is == 0 then check if hours has a value >= 1
                     if(inputIn_hours.value >= 1){
                         timeIn_hrs.innerHTML = --inputIn_hours.value;
-
+                        // remove -1 from hours and add 60minutes to minute
                         inputIn_minute.value = 60;
                         timeIn_min.innerHTML = inputIn_minute.value;
                     }else{
-                        
+                        // if all input value for all is = 0
                         if(inputIn_hours.value == 0 && inputIn_minute.value == 0 && inputIn_seconds.value ==0){
-
+                            // stop the loop
                             clearInterval(interv);
 
-                            inputIn_seconds.value = 0;
+                            // set all values to 0
+
+                            // inputIn_seconds.value = 0;
                             timeIn_sec.innerHTML =  0 + "0";
 
-                            inputIn_minute.value = 0;
+                            // inputIn_minute.value = 0;
                             timeIn_min.innerHTML =  0 + "0";
                             
-                            inputIn_hours.value = 0 ;
+                            // inputIn_hours.value = 0 ;
                             timeIn_hrs.innerHTML =  0 + "0";
                             
                         }
@@ -105,6 +111,7 @@ function startAction(){
                 }
 
             }else{
+                // remove -1 from the actual value in the input second and show in the sec span view
                 timeIn_sec.innerHTML = --inputIn_seconds.value;
 
             }
@@ -112,7 +119,7 @@ function startAction(){
     
         
     }
-    let interv = setInterval(countTime, 1000);
+    let interv = setInterval(countTime, 1000);// it calls the count function for every 1 second
 
     btnStop.addEventListener("click", ()=>{
         clearInterval(interv);
@@ -121,6 +128,7 @@ function startAction(){
 
 }
 
+// this calls the start action function
 btnSetTimer.addEventListener("click", startAction);
 
 
