@@ -15,9 +15,10 @@ let inputIn_seconds = document.getElementById("input-seconds");
 
 let btnSetTimer = document.getElementById("btn-set");
 
-let setTimerWarningText = document.getElementById("p-timer");
+let setTimerWarningText = document.getElementById("p-timer");//this represents the p tag
 
 function toggleSection(){
+    // this function toggles the view between input time section and view countdown section
     if(setTimerSection.hasAttribute("name")){
         viewTimerSection.style.display = "flex";
         setTimerSection.style.display = "none";
@@ -30,7 +31,20 @@ function toggleSection(){
     }
 }
 
-    btnBackToSetTimer.addEventListener("click", ()=>{
+function viewMessage(){   
+    // this function toggles the <p> tag that is used for alerting the user if the input is empty    
+setTimerWarningText.innerHTML = "Please input a number";
+
+setTimerWarningText.style.display = "block";
+
+setTimerWarningText.style.color = "white";
+setTimeout(()=>{
+    // this removes the alert after 2seconds
+    setTimerWarningText.style.display = "none";
+},2000);
+}
+
+btnBackToSetTimer.addEventListener("click", ()=>{
         toggleSection();
         inputIn_seconds.value = "";
 
@@ -38,20 +52,22 @@ function toggleSection(){
         
         inputIn_hours.value = "";
 
-    });
+        viewMessage();// it calls the alert tag
 
+});
+    // this event listener calls the toggleSection above
     btnSetTimer.addEventListener("click", toggleSection);
 
     
 function startAction(){
 
     function countTime(){
-        timeIn_sec.innerHTML = inputIn_seconds.value;
-        timeIn_min.innerHTML = inputIn_minute.value;
-        timeIn_hrs.innerHTML = inputIn_hours.value;
+         inputIn_seconds.value == 0 ? timeIn_sec.innerHTML = 0+"0": timeIn_sec.innerHTML = inputIn_seconds.value ;
 
+         inputIn_minute.value == 0 ? timeIn_min.innerHTML = 0 + "0": timeIn_min.innerHTML = inputIn_minute.value ;
+         inputIn_hours.value == 0 ? timeIn_hrs.innerHTML = 0 + "0" : timeIn_hrs.innerHTML = inputIn_hours.value;
 
-            
+ 
             let result_seconds = inputIn_seconds.value; 
             
             if (result_seconds == 0){
@@ -106,23 +122,12 @@ function startAction(){
 }
 
 btnSetTimer.addEventListener("click", startAction);
-    // inputIn_seconds.value = --inputIn_minute.value;
 
-    // if( Number(inputIn_hours.value) == 0 || Number(inputIn_minute.value) == 0 || Number(inputIn_seconds) == 0 ){
 
-    //     setTimerWarningText.innerHTML = "Please input a number";
-    //     setTimerWarningText.style.display = "block";
-    //     setTimerWarningText.style.color = "white";
-    //     setTimeout(()=>{
-    //         setTimerWarningText.style.display = "none";
-    //     },2000);
-        
-    // }else{
-    //     btnSetTimer.addEventListener("click", toggleSection);
-        
-    // }
+
+
 
 /*
 on the seconds 
-check if the value is not set let the value be 59 or use the value set in the input and reduce it by -1 till it (the seconds ) becomes 0 and then remove -1 from the minutes, this process should repeat till minute == 0 and then remove -1 from hours till it (hours) gets to "0" and check if minutes is == 0 
+check if the value is not set let the value be 59 or use the value set in the input and reduce it by -1 till it (the seconds ) becomes 0 and then remove -1 from the minutes, this process should repeat till minute == 0 and then remove -1 from hours till it (hours) gets to "0" and check if hour == 0, minutes is == 0, sec == 0 then clearInterval() 
 */ 
