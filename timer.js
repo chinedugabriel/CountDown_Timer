@@ -30,61 +30,99 @@ function toggleSection(){
     }
 }
 
-    btnBackToSetTimer.addEventListener("click",toggleSection);
+    btnBackToSetTimer.addEventListener("click", ()=>{
+        toggleSection();
+        inputIn_seconds.value = "";
 
-
-    
-function setAction(){
-
-    // inputIn_seconds.value = --inputIn_minute.value;
-
-    if(inputIn_hours.value == "" || inputIn_minute.value == "" || inputIn_seconds == ""){
-        setTimerWarningText.innerHTML = "Please input a number";
-        setTimerWarningText.style.display = "block";
-        setTimerWarningText.style.color = "white";
-        setTimeout(()=>{
-            setTimerWarningText.style.display = "none";
-        },2000);
-    }else{
-        btnSetTimer.addEventListener("click", toggleSection);
+        inputIn_minute.value = "";
         
-        if( inputIn_seconds.value == ""){
+        inputIn_hours.value = "";
+
+    });
+
+    btnSetTimer.addEventListener("click", toggleSection);
+
     
-            timeIn_sec.innerHTML = 59;
-    
-            console.log("stage 1 is working");
+function startAction(){
+
+    function countTime(){
+        timeIn_sec.innerHTML = inputIn_seconds.value;
+        timeIn_min.innerHTML = inputIn_minute.value;
+        timeIn_hrs.innerHTML = inputIn_hours.value;
+
+
             
-        }else{
-            console.log("Else is working");
+            let result_seconds = inputIn_seconds.value; 
             
-            timeIn_sec.innerHTML = inputIn_seconds.value;
-    
-            let result_seconds = timeIn_sec.innerHTML; 
-            
-            
-            // if(result_seconds == 0){
-            //     console.log("stage 2 is working");
-    
-            //     timeIn_sec.innerHTML = "00";
+            if (result_seconds == 0){
+                inputIn_seconds.value = 0;
                 
-            //     if(inputIn_minute.value == 0){
-    
-            //         inputIn_minute.value = 59;
-    
-            //     }else{
-    
-            //         result_minutes = --inputIn_minute.value;
-            //     }
-    
-            // }else{
-            //     timeIn_sec.innerHTML = --inputIn_seconds.value;
-            // }
-        }
-        
-    
-        // console.log(inputIn_seconds.value == "")
+                if(inputIn_minute.value >=1 ){
 
+                    timeIn_min.innerHTML = --inputIn_minute.value;
+
+                    inputIn_seconds.value = 59;
+                }else{
+                    if(inputIn_hours.value >= 1){
+                        timeIn_hrs.innerHTML = --inputIn_hours.value;
+
+                        inputIn_minute.value = 60;
+                        timeIn_min.innerHTML = inputIn_minute.value;
+                    }else{
+                        
+                        if(inputIn_hours.value == 0 && inputIn_minute.value == 0 && inputIn_seconds.value ==0){
+
+                            clearInterval(interv);
+
+                            inputIn_seconds.value = 0;
+                            timeIn_sec.innerHTML =  0 + "0";
+
+                            inputIn_minute.value = 0;
+                            timeIn_min.innerHTML =  0 + "0";
+                            
+                            inputIn_hours.value = 0 ;
+                            timeIn_hrs.innerHTML =  0 + "0";
+                            
+                        }
+
+                    }
+                }
+
+            }else{
+                timeIn_sec.innerHTML = --inputIn_seconds.value;
+
+            }
+
+    
+        
     }
+    let interv = setInterval(countTime, 1000);
+
+    btnStop.addEventListener("click", ()=>{
+        clearInterval(interv);
+    });
+    btnStart.addEventListener("click", startAction);
+
 }
 
-btnSetTimer.addEventListener("click", setAction);
+btnSetTimer.addEventListener("click", startAction);
+    // inputIn_seconds.value = --inputIn_minute.value;
+
+    // if( Number(inputIn_hours.value) == 0 || Number(inputIn_minute.value) == 0 || Number(inputIn_seconds) == 0 ){
+
+    //     setTimerWarningText.innerHTML = "Please input a number";
+    //     setTimerWarningText.style.display = "block";
+    //     setTimerWarningText.style.color = "white";
+    //     setTimeout(()=>{
+    //         setTimerWarningText.style.display = "none";
+    //     },2000);
+        
+    // }else{
+    //     btnSetTimer.addEventListener("click", toggleSection);
+        
+    // }
+
+/*
+on the seconds 
+check if the value is not set let the value be 59 or use the value set in the input and reduce it by -1 till it (the seconds ) becomes 0 and then remove -1 from the minutes, this process should repeat till minute == 0 and then remove -1 from hours till it (hours) gets to "0" and check if minutes is == 0 
+*/ 
